@@ -13,24 +13,28 @@ class Project extends Model
         'featured',
         'status',
         'team_size',
-        'tags',
         'tech_stack',
         'image',
-        'screenshots',
+      //  'screenshots',
         'problem',
         'solution',
     ];
 
     protected $attributes = [
-    'tags' => '["test","test2"]',
-    'tech_stack' => '[]',
+    'tech_stack' => '[]'
 ];
 
     protected $casts = [
     'featured' => 'boolean',
-    'tags' => 'array',
     'tech_stack' => 'array',
-    'screenshots' => 'array',
+   // 'screenshots' => 'array',
 ];
+
+
+public function tags()
+{
+    return $this->belongsToMany(Tag::class);
+
+}
 
 }

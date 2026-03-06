@@ -14,7 +14,6 @@ class ProjectController extends Controller
         );
     }
 
-    // 🔹 إضافة مشروع جديد
     public function store(Request $request)
     {
         $project = Project::create([
@@ -26,7 +25,6 @@ class ProjectController extends Controller
         return response()->json($project, 201);
     }
 
-    // 🔹 حذف مشروع
     public function destroy($id)
     {
         $project = Project::find($id);
@@ -55,8 +53,8 @@ class ProjectController extends Controller
         'name' => 'sometimes|required|string|max:255',
         'description' => 'sometimes|required|string',
         'year' => 'sometimes|required|integer',
-        // إذا تبين تعدلين غيرها بعدين أضيفيها هنا
-    ]);
+
+        ]);
 
     $project->update($data);
 
