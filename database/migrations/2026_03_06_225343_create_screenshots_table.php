@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('screenshots', function (Blueprint $table) {
             $table->id();
-            $table ->foreignId('project_id')->constrained()->cascadeOnDelete();
+            $table ->foreignId('project_id')->constrained()->cascadeOnDelete(); // cascadeOnDelete will delete the screenshot if the project is deleted
             $table->string('image');
             $table->timestamps();
         });
