@@ -15,7 +15,6 @@ class Project extends Model
         'team_size',
         'tech_stack',
         'image',
-      //  'screenshots',
         'problem',
         'solution',
     ];
@@ -27,13 +26,18 @@ class Project extends Model
     protected $casts = [
     'featured' => 'boolean',
     'tech_stack' => 'array',
-   // 'screenshots' => 'array',
 ];
 
 
 public function tags()
 {
     return $this->belongsToMany(Tag::class);
+
+}
+
+public function screenshots()
+{
+    return $this->hasMany(Screenshot::class);
 
 }
 
