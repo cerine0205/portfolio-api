@@ -41,4 +41,10 @@ public function screenshots()
 
 }
 
+public function messages()
+{
+    return $this->hasMany(Message::class);
+
+}
+
 }
