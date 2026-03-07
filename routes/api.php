@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -10,7 +11,8 @@ Route::get('/user', function (Request $request) {
 
 
 
-Route::get('/projects', [ProjectController::class, 'index']);      // list
-Route::post('/projects', [ProjectController::class, 'store']);     // create
-Route::delete('/projects/{id}', [ProjectController::class, 'destroy']); // delete
-Route::put('/projects/{id}', [ProjectController::class, 'update']); // update
+Route::apiResource('projects', ProjectController::class)
+    ->only(['index','store','update','destroy']);
+
+Route::apiResource('certificates', CertificateController::class)
+    ->only(['index','store','update','destroy']);
