@@ -17,6 +17,14 @@ class Project extends Model
         'image',
         'problem',
         'solution',
+        'github_url',
+        'live_url',
+        'report_url',
+        'role',
+        'duration',
+        'type',
+        'challenges',
+        'results'
     ];
 
     protected $attributes = [

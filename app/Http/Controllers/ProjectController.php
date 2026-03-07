@@ -40,6 +40,17 @@ class ProjectController extends Controller
             'problem' => 'nullable|string',
             'solution' => 'nullable|string',
 
+            'github_url' => 'nullable|string',
+            'live_url' => 'nullable|string', 
+            'report_url' => 'nullable|string', 
+
+            'role' => 'nullable|string|max:255',
+            'duration' => 'nullable|string|max:255',
+            'type' => 'nullable|string|max:255',
+
+            'challenges' => 'nullable|string',
+            'results' => 'nullable|string',
+
             'tags' => 'nullable|array',  // tags must be an array ["frontend", "backend"]
             'tags.*' => 'string', // each tag must be a string  'backend'
 
@@ -111,6 +122,17 @@ class ProjectController extends Controller
             'image' => 'sometimes|nullable|string', // optional, and can be null if user wants to remove it
             'problem' => 'sometimes|nullable|string',
             'solution' => 'sometimes|nullable|string',
+            
+            'github_url' => 'sometimes|nullable|string',
+            'live_url' => 'sometimes|nullable|string', 
+            'report_url' => 'sometimes|nullable|string', 
+
+            'role' => 'sometimes|nullable|string|max:255',
+            'duration' => 'sometimes|nullable|string|max:255',
+            'type' => 'sometimes|nullable|string|max:255',
+
+            'challenges' => 'sometimes|nullable|string',
+            'results' => 'sometimes|nullable|string',
 
             'tags' => 'sometimes|array',
             'tags.*' => 'string',

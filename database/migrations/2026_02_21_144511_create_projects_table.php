@@ -13,17 +13,32 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
+
             $table->string('name');
             $table->text('description');
             $table->year('year');
+
             $table->boolean('featured')->default(false);
             $table->string('status')->default('draft');
             $table->integer('team_size')->default(1);
+
             $table->json('tech_stack')->nullable();
             $table->string('image')->nullable();
-          //  $table->json('screenshots')->nullable();
+
             $table->text('problem')->nullable();
             $table->text('solution')->nullable();
+
+            $table->string('github_url')->nullable();   
+            $table->string('live_url')->nullable();     
+            $table->string('report_url')->nullable();  
+
+            $table->string('role')->nullable();        
+            $table->string('duration')->nullable();    
+            $table->string('type')->nullable();        
+
+            $table->text('challenges')->nullable();    
+            $table->text('results')->nullable();      
+
             $table->timestamps();
         });
     }
