@@ -166,6 +166,9 @@ class ProjectController extends Controller
 
         if (array_key_exists('screenshots', $data)) {
 
+            //delete old screenshots
+            $project->screenshots()->delete();
+
             // add new screenshots
             foreach ($data['screenshots'] as $image) {
                 $project->screenshots()->create([
