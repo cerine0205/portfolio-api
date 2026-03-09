@@ -26,23 +26,25 @@ class ProjectController extends Controller
         $data = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
-            'year' => 'required|integer',
+            'year' => 'required|integer|min:2000|max:2100',
 
             'featured' => 'nullable|boolean',
             'status' => 'nullable|string',
-            'team_size' => 'nullable|integer',
+            'team_size' => 'nullable|integer|min:1',
 
             'tech_stack' => 'nullable|array',  // tech_stack must be an array ["react", "Laravel"]
             'tech_stack.*' => 'string', // each tech_stack must be a string  'react'
 
-            'image' => 'nullable|string', // image link must be a string  'https://example.com/image.jpg'
+            'image' => 'nullable|url', // image link must be a url  'https://example.com/image.jpg'
 
             'problem' => 'nullable|string',
             'solution' => 'nullable|string',
 
-            'github_url' => 'nullable|string',
-            'live_url' => 'nullable|string', 
-            'report_url' => 'nullable|string', 
+            'github_url' => 'nullable|url',
+            'live_url' => 'nullable|url',
+            'report_url' => 'nullable|url',
+            'demo_url' => 'nullable|url',
+            'presentation_url' => 'nullable|url',
 
             'role' => 'nullable|string|max:255',
             'duration' => 'nullable|string|max:255',
@@ -51,11 +53,19 @@ class ProjectController extends Controller
             'challenges' => 'nullable|string',
             'results' => 'nullable|string',
 
+            'features' => 'nullable|array',
+            'features.*' => 'string',
+
+            'architecture' => 'nullable|string',
+            'architecture_image' => 'nullable|url',
+
+            'refactor_notes' => 'nullable|string',
+
             'tags' => 'nullable|array',  // tags must be an array ["frontend", "backend"]
             'tags.*' => 'string', // each tag must be a string  'backend'
 
             'screenshots' => 'nullable|array',
-            'screenshots.*' => 'string'
+            'screenshots.*' => 'url'
         ]);
 
 
@@ -110,22 +120,24 @@ class ProjectController extends Controller
 
             'name' => 'sometimes|required|string|max:255', // optional, but if sent it must be a non-empty string
             'description' => 'sometimes|required|string',
-            'year' => 'sometimes|required|integer',
+            'year' => 'sometimes|required|integer|min:2000|max:2100',
 
             'featured' => 'sometimes|boolean', // optional, but if it exists it cannot be null and must be a boolean
             'status' => 'sometimes|string',
-            'team_size' => 'sometimes|integer',
+            'team_size' => 'sometimes|integer|min:1',
 
             'tech_stack' => 'sometimes|array',
             'tech_stack.*' => 'string',
 
-            'image' => 'sometimes|nullable|string', // optional, and can be null if user wants to remove it
+            'image' => 'sometimes|nullable|url', // optional, and can be null if user wants to remove it
             'problem' => 'sometimes|nullable|string',
             'solution' => 'sometimes|nullable|string',
-            
-            'github_url' => 'sometimes|nullable|string',
-            'live_url' => 'sometimes|nullable|string', 
-            'report_url' => 'sometimes|nullable|string', 
+
+            'github_url' => 'sometimes|nullable|url',
+            'live_url' => 'sometimes|nullable|url',
+            'report_url' => 'sometimes|nullable|url',
+            'demo_url' => 'sometimes|nullable|url',
+            'presentation_url' => 'sometimes|nullable|url',
 
             'role' => 'sometimes|nullable|string|max:255',
             'duration' => 'sometimes|nullable|string|max:255',
@@ -134,11 +146,19 @@ class ProjectController extends Controller
             'challenges' => 'sometimes|nullable|string',
             'results' => 'sometimes|nullable|string',
 
+            'features' => 'sometimes|array',
+            'features.*' => 'string',
+
+            'architecture' => 'sometimes|nullable|string',
+            'architecture_image' => 'sometimes|nullable|url',
+
+            'refactor_notes' => 'sometimes|nullable|string',
+
             'tags' => 'sometimes|array',
             'tags.*' => 'string',
 
             'screenshots' => 'sometimes|array',
-            'screenshots.*' => 'string'
+            'screenshots.*' => 'url'
         ]);
 
         // update the project using the validated data in $data without tags and screenshots

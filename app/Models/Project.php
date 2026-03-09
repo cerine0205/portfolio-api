@@ -20,20 +20,28 @@ class Project extends Model
         'github_url',
         'live_url',
         'report_url',
+        'demo_url',
+        'presentation_url',
         'role',
         'duration',
         'type',
         'challenges',
-        'results'
+        'results',
+        'features',
+        'architecture',
+        'architecture_image',
+        'refactor_notes',
     ];
 
     protected $attributes = [
-    'tech_stack' => '[]'
+    'tech_stack' => '[]',
+    'features' => '[]'
 ];
 
     protected $casts = [
     'featured' => 'boolean',
     'tech_stack' => 'array',
+    'features' => 'array'
 ];
 
 
