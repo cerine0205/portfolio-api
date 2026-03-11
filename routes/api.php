@@ -1,28 +1,48 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SkillController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+/*
+|--------------------------------------------------------------------------
+| Public Routes
+|--------------------------------------------------------------------------
+*/
 
+Route::get('projects', [ProjectController::class, 'index']);
+Route::get('certificates', [CertificateController::class, 'index']);
+Route::get('skills', [SkillController::class, 'index']);
 
+Route::post('messages', [MessageController::class, 'store']);
 
-Route::apiResource('projects', ProjectController::class)
-    ->only(['index', 'store', 'update', 'destroy']);
+Route::post('login', [AuthController::class, 'login']);
 
-Route::apiResource('certificates', CertificateController::class)
-    ->only(['index', 'store', 'update', 'destroy']);
+/*
+|--------------------------------------------------------------------------
+| Protected Routes
+|--------------------------------------------------------------------------
+*/
 
-Route::apiResource('messages', MessageController::class)
-    ->only(['index', 'store', 'destroy']);
+Route::middleware('auth:sanctum')->group(function () {
 
-Route::patch('messages/{id}/read', [MessageController::class, 'markAsRead']);
+    Route::apiResource('projects', ProjectController::class)
+        ->only(['store', 'update', 'destroy']);
 
-Route::apiResource('skills', SkillController::class)
-    ->only(['index', 'store', 'destroy']);
+    Route::apiResource('certificates', CertificateController::class)
+        ->only(['store', 'update', 'destroy']);
+
+    Route::apiResource('skills', SkillController::class)
+        ->only(['store', 'destroy']);
+
+    Route::apiResource('messages', MessageController::class)
+        ->only(['index', 'destroy']);
+
+    Route::patch('messages/{id}/read', [MessageController::class, 'markAsRead']);
+
+    Route::post('logout', [AuthController::class, 'logout']);
+
+});
