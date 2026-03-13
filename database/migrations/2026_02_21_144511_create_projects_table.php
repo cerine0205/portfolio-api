@@ -28,7 +28,9 @@ return new class extends Migration
             $table->text('problem')->nullable();
             $table->text('solution')->nullable();
 
-            $table->string('github_url')->nullable();   
+            $table->string('repo')->nullable();  
+            $table->string('frontend_repo')->nullable();
+            $table->string('backend_repo')->nullable(); 
             $table->string('live_url')->nullable();     
             $table->string('report_url')->nullable();  
             $table->string('demo_url')->nullable();

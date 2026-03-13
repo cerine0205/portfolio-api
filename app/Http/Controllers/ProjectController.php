@@ -40,7 +40,9 @@ class ProjectController extends Controller
             'problem' => 'nullable|string',
             'solution' => 'nullable|string',
 
-            'github_url' => 'nullable|url',
+            'repo' => 'nullable|url',
+            'frontend_repo' => 'nullable|url',
+            'backend_repo' => 'nullable|url',
             'live_url' => 'nullable|url',
             'report_url' => 'nullable|url',
             'demo_url' => 'nullable|url',
@@ -133,7 +135,9 @@ class ProjectController extends Controller
             'problem' => 'sometimes|nullable|string',
             'solution' => 'sometimes|nullable|string',
 
-            'github_url' => 'sometimes|nullable|url',
+            'repo' => 'sometimes|nullable|url',
+            'frontend_repo' => 'sometimes|nullable|url',
+            'backend_repo' => 'sometimes|nullable|url',
             'live_url' => 'sometimes|nullable|url',
             'report_url' => 'sometimes|nullable|url',
             'demo_url' => 'sometimes|nullable|url',
